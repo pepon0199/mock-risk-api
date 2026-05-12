@@ -1,0 +1,12 @@
+{
+  "unilateral": {
+    "risk_name": "Unilateral NDA",
+    "detection_rules": [
+      "Only one Disclosing Party",
+      "No mutual obligations",
+      "One-way confidentiality flow"
+    ],
+    "escalation_only": true,
+    "mitigation": "Mandatory legal review required"
+  }
+}
