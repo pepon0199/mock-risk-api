@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
-
 const data = require("./data.json");
+
+// ✅ Use dynamic port (IMPORTANT)
+const PORT = process.env.PORT || 3000;
 
 app.get("/risk-factors/:type", (req, res) => {
     const type = req.params.type;
@@ -13,6 +15,11 @@ app.get("/risk-factors/:type", (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("Mock API running on http://localhost:3000/risk-factors/unilateral");
+// Optional root
+app.get("/", (req, res) => {
+    res.send("Mock API running ✅");
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
