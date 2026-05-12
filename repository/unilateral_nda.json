@@ -1,0 +1,30 @@
+{
+  "risk_key": "unilateral_nda",
+  "risk_name": "Unilateral NDA",
+
+  "definition": {
+    "description": "Only one party is obligated to maintain confidentiality, exposing Accenture without reciprocal protection."
+  },
+
+  "rules": {
+    "indicators": [
+      "Only one Disclosing Party",
+      "Only one Receiving Party",
+      "Confidentiality applies in one direction"
+    ],
+    "exclusions": [
+      "both parties",
+      "either party",
+      "mutual NDA"
+    ]
+  },
+
+  "policy": {
+    "escalation_only": true,
+    "mitigation_allowed": false
+  },
+
+  "templates": {
+    "mitigating_language": "Mandatory legal review required. No auto-mitigation permitted."
+  }
+}

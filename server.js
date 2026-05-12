@@ -1,23 +1,21 @@
 const express = require("express");
-const app = express();
-const data = require("./data.json");
+const fs = require("fs");
+const path = require("path");
 
-// ✅ Use dynamic port (IMPORTANT)
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/risk-factors/:type", (req, res) => {
     const type = req.params.type;
 
-    if (data[type]) {
-        res.json(data[type]);
-    } else {
-        res.status(404).json({ error: "Not found" });
-    }
-});
+    try {
+        const filePath = path.join(__dirname, "repository", `${type}.json`);
+        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-// Optional root
-app.get("/", (req, res) => {
-    res.send("Mock API running ✅");
+        res.json(data);
+    } catch (error) {
+        res.status(404).json({ error: "Risk factor not found" });
+    }
 });
 
 app.listen(PORT, () => {
